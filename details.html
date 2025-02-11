@@ -135,39 +135,45 @@
             let fileIndex = parseInt(params.get("file")) || 1;
             const textContent = document.getElementById("text-content");
             const basePath = `data/story${fileIndex}`;
-            
+    
+            // 텍스트 불러오기
             fetch(`${basePath}/story.txt`)
                 .then(response => response.text())
                 .then(text => {
                     textContent.textContent = text;
                 })
                 .catch(error => console.error("Error loading text:", error));
-            
+    
+            // Select 박스 값 업데이트
             document.getElementById("story-select").value = fileIndex;
             document.getElementById("story-select").addEventListener("change", (event) => {
                 window.location.href = `details.html?file=${event.target.value}`;
             });
-            
-            document.querySelector("#audio-1 source").src = `${basePath}/ours.wav`;
-            document.querySelector("#audio-2 source").src = `${basePath}/ours.wav`;
-            document.querySelector("#audio-3 source").src = `${basePath}/ours.wav`;
-            document.querySelector("#audio-4 source").src = `${basePath}/ours.wav`;
-            document.querySelector("#audio-5 source").src = `${basePath}/ours.wav`;
-            
-            document.querySelectorAll("audio").forEach(audio => {
-                audio.load();
-            });
-            
+    
+            // 오디오 파일 설정
+            document.getElementById("audio-1").src = `${basePath}/ours.wav`;
+            document.getElementById("audio-2").src = `${basePath}/ours.wav`;
+            document.getElementById("audio-3").src = `${basePath}/ours.wav`;
+            document.getElementById("audio-4").src = `${basePath}/ours.wav`;
+            document.getElementById("audio-5").src = `${basePath}/ours.wav`;
+    
+            // 오디오 새로고침 (브라우저가 새로운 src를 반영하도록 강제)
+            document.getElementById("audio-1").load();
+            document.getElementById("audio-2").load();
+            document.getElementById("audio-3").load();
+            document.getElementById("audio-4").load();
+            document.getElementById("audio-5").load();
+    
+            // 이전 페이지 버튼 이벤트
             document.getElementById("prev").addEventListener("click", () => {
                 if (fileIndex > 1) {
-                    fileIndex--;
-                    window.location.href = `details.html?file=${fileIndex}`;
+                    window.location.href = `details.html?file=${fileIndex - 1}`;
                 }
             });
-            
+    
+            // 다음 페이지 버튼 이벤트
             document.getElementById("next").addEventListener("click", () => {
-                fileIndex++;
-                window.location.href = `details.html?file=${fileIndex}`;
+                window.location.href = `details.html?file=${fileIndex + 1}`;
             });
         });
     </script>
