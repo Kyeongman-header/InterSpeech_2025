@@ -96,7 +96,7 @@
             <h3>Audio Versions</h3>
             <p>Model 1</p>
             <audio controls>
-                <source id="audio-1" src="data/story1/ours.wav" type="audio/wav">
+                <source id="audio-1" src="" type="audio/wav">
             </audio>
             <p>Model 2</p>
             <audio controls>
@@ -148,11 +148,15 @@
                 window.location.href = `details.html?file=${event.target.value}`;
             });
             
-            document.getElementById("audio-1").src = `${basePath}/ours.wav`;
-            document.getElementById("audio-2").src = `${basePath}/ours.wav`;
-            document.getElementById("audio-3").src = `${basePath}/ours.wav`;
-            document.getElementById("audio-4").src = `${basePath}/ours.wav`;
-            document.getElementById("audio-5").src = `${basePath}/ours.wav`;
+            document.querySelector("#audio-1 source").src = `${basePath}/ours.wav`;
+            document.querySelector("#audio-2 source").src = `${basePath}/ours.wav`;
+            document.querySelector("#audio-3 source").src = `${basePath}/ours.wav`;
+            document.querySelector("#audio-4 source").src = `${basePath}/ours.wav`;
+            document.querySelector("#audio-5 source").src = `${basePath}/ours.wav`;
+            
+            document.querySelectorAll("audio").forEach(audio => {
+                audio.load();
+            });
             
             document.getElementById("prev").addEventListener("click", () => {
                 if (fileIndex > 1) {
