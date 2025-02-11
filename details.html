@@ -5,6 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Audio & Text Details</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #eaf7e4;
+            text-align: center;
+        }
+        header {
+            text-align: center;
+        }
+        #details {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+        #text-content {
+            width: 100%;
+            height: 200px;
+            overflow: auto;
+            white-space: pre-wrap;
+            background: #eee;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        #audio-section p {
+            font-weight: bold;
+        }
+        #story-select {
+            margin-bottom: 15px;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            background: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #45a049;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -12,34 +65,38 @@
     </header>
     
     <section id="details">
+        <label for="story-select">Select Story:</label>
+        <select id="story-select">
+            <option value="1">Story 1</option>
+            <option value="2">Story 2</option>
+            <option value="3">Story 3</option>
+            <option value="4">Story 4</option>
+            <option value="5">Story 5</option>
+        </select>
+
         <h2>Text Content</h2>
-        <p id="text-content">Loading text...</p>
+        <div id="text-content">Loading text...</div>
         
         <div id="audio-section">
             <h3>Audio Versions</h3>
             <audio controls>
                 <source src="data/story1/ours.wav" type="audio/mpeg">
-                Your browser does not support the audio element.
             </audio>
             <p>Model 1</p>
             <audio controls>
                 <source src="data/story1/ours.wav" type="audio/mpeg">
-                Your browser does not support the audio element.
             </audio>
             <p>Model 2</p>
             <audio controls>
                 <source src="data/story1/ours.wav" type="audio/mpeg">
-                Your browser does not support the audio element.
             </audio>
             <p>Model 3</p>
             <audio controls>
                 <source src="data/story1/ours.wav" type="audio/mpeg">
-                Your browser does not support the audio element.
             </audio>
             <p>Model 4</p>
             <audio controls>
                 <source src="data/story1/ours.wav" type="audio/mpeg">
-                Your browser does not support the audio element.
             </audio>
             <p>Model 5</p>
         </div>
@@ -70,14 +127,19 @@
                     textContent.textContent = text;
                 })
                 .catch(error => console.error("Error loading text:", error));
-        
+            
+            document.getElementById("story-select").value = fileIndex;
+            document.getElementById("story-select").addEventListener("change", (event) => {
+                window.location.href = `details.html?file=${event.target.value}`;
+            });
+            
             document.getElementById("prev").addEventListener("click", () => {
                 if (fileIndex > 1) {
                     fileIndex--;
                     window.location.href = `details.html?file=${fileIndex}`;
                 }
             });
-        
+            
             document.getElementById("next").addEventListener("click", () => {
                 fileIndex++;
                 window.location.href = `details.html?file=${fileIndex}`;
