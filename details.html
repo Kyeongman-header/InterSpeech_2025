@@ -8,7 +8,13 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
             background-color: #eaf7e4;
             text-align: center;
         }
@@ -25,7 +31,7 @@
             text-align: left;
         }
         #text-content {
-            width: 100%;
+            width: 95%;
             height: 200px;
             overflow: auto;
             white-space: pre-wrap;
@@ -33,6 +39,7 @@
             padding: 10px;
             border-radius: 5px;
             border: 1px solid #ccc;
+            margin: 10px auto;
         }
         #audio-section p {
             font-weight: bold;
@@ -79,26 +86,26 @@
         
         <div id="audio-section">
             <h3>Audio Versions</h3>
-            <audio controls>
-                <source src="data/story1/ours.wav" type="audio/mpeg">
-            </audio>
             <p>Model 1</p>
             <audio controls>
-                <source src="data/story1/ours.wav" type="audio/mpeg">
+                <source id="audio-1" src="" type="audio/mpeg">
             </audio>
             <p>Model 2</p>
             <audio controls>
-                <source src="data/story1/ours.wav" type="audio/mpeg">
+                <source id="audio-2" src="" type="audio/mpeg">
             </audio>
             <p>Model 3</p>
             <audio controls>
-                <source src="data/story1/ours.wav" type="audio/mpeg">
+                <source id="audio-3" src="" type="audio/mpeg">
             </audio>
             <p>Model 4</p>
             <audio controls>
-                <source src="data/story1/ours.wav" type="audio/mpeg">
+                <source id="audio-4" src="" type="audio/mpeg">
             </audio>
             <p>Model 5</p>
+            <audio controls>
+                <source id="audio-5" src="" type="audio/mpeg">
+            </audio>
         </div>
         
         <div id="questions">
@@ -132,6 +139,12 @@
             document.getElementById("story-select").addEventListener("change", (event) => {
                 window.location.href = `details.html?file=${event.target.value}`;
             });
+            
+            document.getElementById("audio-1").src = `${basePath}/ours.wav`;
+            document.getElementById("audio-2").src = `${basePath}/ours.wav`;
+            document.getElementById("audio-3").src = `${basePath}/ours.wav`;
+            document.getElementById("audio-4").src = `${basePath}/ours.wav`;
+            document.getElementById("audio-5").src = `${basePath}/ours.wav`;
             
             document.getElementById("prev").addEventListener("click", () => {
                 if (fileIndex > 1) {
