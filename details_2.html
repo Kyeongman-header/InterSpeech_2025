@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Audio & Text Details - Story 1</title>
+    <title>Audio & Text Details - Story 2</title>
     <link rel="stylesheet" href="styles.css">
     <style>
         body {
@@ -64,14 +64,14 @@
 </head>
 <body>
     <header>
-        <h1>Audio & Text Comparison - Story 1</h1>
+        <h1>Audio & Text Comparison - Story 2</h1>
     </header>
     
     <section id="details">
         <label for="story-select">Select Story:</label>
         <select id="story-select">
-            <option value="1" selected>Story 1</option>
-            <option value="2">Story 2</option>
+            <option value="1">Story 1</option>
+            <option value="2" selected>Story 2</option>
             <option value="3">Story 3</option>
             <option value="4">Story 4</option>
             <option value="5">Story 5</option>
@@ -84,23 +84,23 @@
             <h3>Audio Versions</h3>
             <p>Model 1</p>
             <audio controls>
-                <source src="data/story1/ours.wav" type="audio/wav">
+                <source src="data/story2/ours.wav" type="audio/wav">
             </audio>
             <p>Model 2</p>
             <audio controls>
-                <source src="data/story1/ours.wav" type="audio/wav">
+                <source src="data/story2/ours.wav" type="audio/wav">
             </audio>
             <p>Model 3</p>
             <audio controls>
-                <source src="data/story1/ours.wav" type="audio/wav">
+                <source src="data/story2/ours.wav" type="audio/wav">
             </audio>
             <p>Model 4</p>
             <audio controls>
-                <source src="data/story1/ours.wav" type="audio/wav">
+                <source src="data/story2/ours.wav" type="audio/wav">
             </audio>
             <p>Model 5</p>
             <audio controls>
-                <source src="data/story1/ours.wav" type="audio/wav">
+                <source src="data/story2/ours.wav" type="audio/wav">
             </audio>
         </div>
         
@@ -112,13 +112,14 @@
         </div>
         
         <nav>
-            <a href="details_2.html"><button id="next">Next</button></a>
+            <a href="details_1.html"><button id="prev">Previous</button></a>
+            <a href="details_3.html"><button id="next">Next</button></a>
         </nav>
     </section>
     
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            fetch("data/story1/story.txt")
+            fetch("data/story2/story.txt")
                 .then(response => response.text())
                 .then(text => {
                     document.getElementById("text-content").textContent = text;
