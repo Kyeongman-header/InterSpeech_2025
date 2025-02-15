@@ -70,11 +70,18 @@
     <section id="details">
         <label for="story-select">Select Story:</label>
         <select id="story-select">
-            <option value="1" selected>Story 1</option>
+            <option value="1">Story 1</option>
             <option value="2">Story 2</option>
             <option value="3">Story 3</option>
             <option value="4">Story 4</option>
             <option value="5">Story 5</option>
+            <option value="6">Story 6</option>
+            <option value="7">Story 7</option>
+            <option value="8">Story 8</option>
+            <option value="9">Story 9</option>
+            <option value="10">Story 10</option>
+            <option value="11">Story 11</option>
+            <option value="12">Story 12</option>
         </select>
         
         <h2>Text Content</h2>
@@ -84,30 +91,37 @@
             <h3>Audio Versions</h3>
             <p>Model 1</p>
             <audio controls>
-                <source src="data/story1/ours.wav" type="audio/wav">
+                <source src="data/story1/story_1_audio.wav" type="audio/wav">
             </audio>
             <p>Model 2</p>
             <audio controls>
-                <source src="data/story1/ours.wav" type="audio/wav">
+                <source src="data/story1/story_1_ablation_no_multimodal_audio.wav" type="audio/wav">
             </audio>
             <p>Model 3</p>
             <audio controls>
-                <source src="data/story1/ours.wav" type="audio/wav">
+                <source src="data/story1/story_1_ablation_no_instruction_audio.wav" type="audio/wav">
             </audio>
             <p>Model 4</p>
             <audio controls>
-                <source src="data/story1/ours.wav" type="audio/wav">
+                <source src="data/story1/story1.txt_Chapter_0.mp3" type="audio/mpeg">
             </audio>
             <p>Model 5</p>
             <audio controls>
-                <source src="data/story1/ours.wav" type="audio/wav">
+                <source src="data/story1/merged_audio.wav" type="audio/wav">
+            </audio>
+            <p>Model 6</p>
+            <audio controls>
+                <source src="data/story1/infer_cli_20250213_153005.wav" type="audio/wav">
             </audio>
         </div>
         
         <div id="questions">
             <h3>Questions</h3>
             <ul>
-                <li>Which version of the audio is the best?</li>
+                <li>Evaluate how well each model's speaker voice characteristics match the overall story on a scale of 1 to 5.</li>
+                <li>Evaluate the overall audiobook generation quality of each model (e.g., clarity, high-frequency balance, naturalness) on a scale of 1 to 5.</li>
+                <li>Evaluate how vividly and accurately each model conveys emotions in each sentence on a scale of 1 to 5.</li>
+                <li>Evaluate how accurately each model distinguishes between different speakers in each sentence on a scale of 1 to 5.</li>
             </ul>
         </div>
         
@@ -118,7 +132,7 @@
     
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            fetch("data/story1/story.txt")
+            fetch("data/story1/story1.txt")
                 .then(response => response.text())
                 .then(text => {
                     document.getElementById("text-content").textContent = text;
